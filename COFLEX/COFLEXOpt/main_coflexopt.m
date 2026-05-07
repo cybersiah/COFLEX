@@ -4,7 +4,7 @@
 % over a range of wind speeds to generate control set points.
 
 fprintf('--- Initialising script for wind turbine control set point optimisation ---\n');
-
+addpath(genpath(fullfile(pwd, 'functions')));
 %% %%%%%%%%%%%%%%%              INPUTS            %%%%%%%%%%%%%%%%%%%%%% %%
 %% Load paths
 fprintf('Loading necessary paths...\n');
@@ -194,3 +194,5 @@ if flag_savetotext == true
     writematrix(results_matrix, output_filename, 'Delimiter', 'tab');
     fprintf('Results saved successfully.\n');
 end
+
+compile_NLP_to_C(turbine, opt_weights, x_constraints, g_constraints, tsr_fix)
